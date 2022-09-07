@@ -3,8 +3,7 @@
 ValoresTabuleiro = matrix(0,nrow=3,ncol=3)
 TabuleiroJogador = matrix("-",nrow=3,ncol=3)
 
-
-# Determina as condições de vitória
+# Determina as condições de vitória.
 Vitoria = function(ValoresTabuleiro){
   casos = c(colSums(ValoresTabuleiro), rowSums(ValoresTabuleiro), sum(diag(ValoresTabuleiro)), sum(ValoresTabuleiro[1,3] + ValoresTabuleiro[2,2] + ValoresTabuleiro[3,1]))
   if (any(casos == 3)){
@@ -18,8 +17,7 @@ Vitoria = function(ValoresTabuleiro){
   }
 }
 
-
-#Determina se a jogada é válida
+#Determina se a jogada é válida.
 Jogada = function(ValoresTabuleiro, X, Y){
   if (X>=1 & X<=3 & Y>= 1 & Y<=3){
     if (ValoresTabuleiro[X, Y] == 0){
@@ -33,10 +31,9 @@ Jogada = function(ValoresTabuleiro, X, Y){
   }
 }
 
-
 Vez = 1   #Quem começa
-#print("O número 1 representa o X, o numero -1 representa o O.\n")
 i = 0
+#Loop principal utilizado para o funcionamento do jogo.
 Ganhou = Vitoria(ValoresTabuleiro)
 while (i<10 & Ganhou){
   print(TabuleiroJogador)
@@ -60,6 +57,7 @@ while (i<10 & Ganhou){
     print("Essa posição não é valida\n")
   }
 }
+
 # Retorna que o Jogo finalizou sem um vencedor (Velha)
 if (Ganhou){
   print("O Jogo deu Velha!")
